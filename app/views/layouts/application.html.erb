@@ -40,7 +40,10 @@
             <p class="control">
               <%= link_to 'New Tweet', new_tweet_path, class: 'button is-info is-inverted' %>
               <% if user_signed_in? %>
-                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'button is-info'%>
+                <%= link_to current_user.name, edit_user_registration_path, class: 'button is-info' %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'button is-info'%>
+              <% else %>
+                <%= link_to 'Sign up', new_user_registration_path, class: 'button is-info'  %>
               <% end %>
             </p>
           </div>
