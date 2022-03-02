@@ -28,6 +28,20 @@
           <small> <%= tweet.user.username %></small><br>
           <p><%= tweet.tweet %></p>
         </div>
+        <nav class="level">
+          <% if user_signed_in? %>
+            <%= form_with url: update_likes_tweet_path(tweet), method: 'patch' do |form| %>
+            <% form.label :likes%>
+              <%= button_tag type: 'submit', class:'button is-primary', id: 'register-button' do %>
+                <i class='fa fa-thumbs-up' aria-hidden='true'><%= tweet.likes %> </i>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="level-left is-mobile"><span class="icon"><i class="fa fa-thumbs-o-up"> <%= tweet.likes %></i></span></div>
+          <% end %>
+          
+        
+        </nav>
           
             <nav class="level">
             <% if user_signed_in? && current_user == tweet.user %>

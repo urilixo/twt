@@ -49,6 +49,11 @@ class TweetsController < ApplicationController
     end
   end
 
+  def update_likes
+    @tweet = Tweet.find(params[:id])
+    @tweet.increment!(:likes, 1)
+  end
+
   # DELETE /tweets/1 or /tweets/1.json
   def destroy
     @tweet.destroy
